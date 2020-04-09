@@ -9,6 +9,17 @@ const bottonContainerHeight = 80.0;
 const colorBox = 0xFF1D1E33;
 const bottomContainerColour = Color(0xFFEB15555);
 const inactiveCardColor = Color(0xFF111328);
+const activeCardColor = Color(0xFF1D1E33);
+
+enum PeopleType {
+  male,
+  female,
+}
+
+class People {
+  PeopleType people;
+  People(this.people);
+}
 
 class InputPage extends StatefulWidget {
   @override
@@ -18,6 +29,28 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Color maleCardColor = inactiveCardColor;
   Color femaleCardColor = inactiveCardColor;
+
+  People male = People(PeopleType.male);
+  People female = People(PeopleType.female);
+
+  void updateColour(People gender) {
+    //male card pressed
+    if (gender == male) {
+      if (maleCardColor == inactiveCardColor) {
+        maleCardColor = activeCardColor;
+        femaleCardColor = inactiveCardColor;
+      } else {
+        maleCardColor = inactiveCardColor;
+      }
+    } else if (gender == female) {
+      if (femaleCardColor == inactiveCardColor) {
+        femaleCardColor = activeCardColor;
+        maleCardColor = inactiveCardColor;
+      } else {
+        femaleCardColor = inactiveCardColor;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +66,9 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      print('Click MALE');
+                      setState(() {
+                        updateColour(male);
+                      });
                     },
                     child: ReusableCard(
                       colour: maleCardColor,
@@ -47,7 +82,9 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      print('Click FAMALE');
+                      setState(() {
+                        updateColour(female);
+                      });
                     },
                     child: ReusableCard(
                       colour: femaleCardColor,
