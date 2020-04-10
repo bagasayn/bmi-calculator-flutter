@@ -1,15 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ReusableCard.dart';
 import 'IconContent.dart';
-
-const bottonContainerHeight = 80.0;
-const colorBox = 0xFF1D1E33;
-const bottomContainerColour = Color(0xFFEB15555);
-const inactiveCardColor = Color(0xFF111328);
-const activeCardColor = Color(0xFF1D1E33);
+import 'constans.dart';
 
 enum Gender {
   male,
@@ -23,7 +20,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
-
+  int height = 180;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +28,7 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: Row(
@@ -72,7 +70,33 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              colour: Color(colorBox),
+              colour: activeCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('HEIGHT', style: labelTextStyle),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        height.toString(),
+                        style: labelNumberStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: labelTextStyle,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: height.toDouble(),
+                    min: 120.0,
+                    max: 220.0,
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -95,7 +119,7 @@ class _InputPageState extends State<InputPage> {
             color: bottomContainerColour,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
-            height: bottonContainerHeight,
+            height: buttonContainerHeight,
           ),
         ],
       ),

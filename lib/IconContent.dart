@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-const nameColor = Color(0xFF8D8E98);
+import 'constans.dart';
 
 class IconContent extends StatelessWidget {
   IconContent({this.nameIcon, this.nameText});
@@ -20,13 +19,7 @@ class IconContent extends StatelessWidget {
         SizedBox(
           height: 15.0,
         ),
-        Text(
-          nameText,
-          style: TextStyle(
-            fontSize: 18.0,
-            color: nameColor,
-          ),
-        )
+        Text(nameText, style: labelTextStyle),
       ],
     );
   }
