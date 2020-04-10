@@ -91,6 +91,7 @@ class _InputPageState extends State<InputPage> {
                     ],
                   ),
                   Slider(
+                    onChanged: () {},
                     value: height.toDouble(),
                     min: 120.0,
                     max: 220.0,
