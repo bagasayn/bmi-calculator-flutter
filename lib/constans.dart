@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const buttonContainerHeight = 80.0;
 const colorBox = 0xFF1D1E33;
-const bottomContainerColour = Color(0xFFEB15555);
+const bottomContainerColour = Color(0xFFEB1555);
 const inactiveCardColor = Color(0xFF111328);
 const activeCardColor = Color(0xFF1D1E33);
 
@@ -11,6 +11,6 @@ const labelTextStyle = TextStyle(
   color: Color(0xFF8D8E98),
 );
 const labelNumberStyle = TextStyle(
-  fontSize: 50.0,
+  fontSize: 40.0,
   fontWeight: FontWeight.w900,
 );
